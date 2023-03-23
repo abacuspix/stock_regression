@@ -1,11 +1,8 @@
 # !/usr/bin/env python
 # coding=utf-8
 import pandas as pd
-import sqlite3
-import sys
 import datetime
 import time
-import sys
 from tslib import *
 from datetime import datetime
 
