@@ -76,10 +76,10 @@ def chooseStockFromMA500(stockList):
             with open(logName, 'a') as f:
                 f.write(''.join(stockname)+'\n')
 
-
+chooseStockFromMA55(stockList)
 chooseStockFromMA120(stockList)
 chooseStockFromMA500(stockList)
-chooseStockFromMA55(stockList)
+
 
 # finished the report
 with open(logName, 'a') as f:
