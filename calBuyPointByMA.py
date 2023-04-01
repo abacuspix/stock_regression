@@ -54,6 +54,25 @@ def chooseStockFromMA250(stockList):
             with open(logName, 'a') as f:
                 f.write(''.join(stockname)+'\n')
 
+def chooseStockFromMA120(stockList):
+    with open(logName, 'a') as f:
+        f.write(str(datetime.now())+'\n')
+        f.write('=================MA120====================================\n')
+    for stockname in stockList:
+        df = getStockData(stockname, dataBaseName)
+        MA_5 = calMA(df, 5)
+        MA_13 = calMA(df, 13)
+        MA_55 = calMA(df, 55)
+        MA_89 = calMA(df, 89)
+        MA_120 = calMA(df, 120)
+        MA_250 = calMA(df, 250)
+        MA_500 = calMA(df, 500)
+        if (df.iloc[-1]['close'] - df.iloc[-1]['MA_120'])/df.iloc[-1]['MA_120'] > 0 \
+                and (df.iloc[-1]['close'] - df.iloc[-1]['MA_120'])/df.iloc[-1]['MA_120']*100 < 5\
+                and (HighMax(df, 120)-df.iloc[-1]['close'])/HighMax(df, 120)*100 > 50:
+            with open(logName, 'a') as f:
+                f.write(''.join(stockname)+'\n')
+
 
 def chooseStockFromMA55(stockList):
     with open(logName, 'a') as f:
@@ -80,6 +99,7 @@ def chooseStockFromMA55(stockList):
 stockList = getAllStockList(dataBaseName)
 #print (stockList)
 chooseStockFromMA55(stockList)
+chooseStockFromMA120(stockList)
 chooseStockFromMA250(stockList)
 chooseStockFromMA500(stockList)
 
