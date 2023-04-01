@@ -7,19 +7,19 @@ from pyalgotrade.stratanalyzer import returns
 from pyalgotrade.stratanalyzer import drawdown
 from pyalgotrade.stratanalyzer import trades
 
-logName="tqqq-dual-sma.log"
+logName="Google-dual-sma.log"
 
 def run_strategy(smaPeriod1, smaPeriod2):
     # Load the bar feed from the CSV file
 
-    instrument = "tqqq"
+    instrument = "GOOGL"
     smaPeriod1 = smaPeriod1
     smaPeriod2 = smaPeriod2
 
     # Download the bars.
     #feed = yahoofinance.build_feed([instrument], 2011, 2012, ".")
     feed = yahoofeed.Feed()
-    feed.addBarsFromCSV(instrument, "data\\us\\tqqq.csv")
+    feed.addBarsFromCSV(instrument, "data\\us\\GOOGL.csv")
     #print(feeds)
 
     # Evaluate the strategy with the feed's bars.
