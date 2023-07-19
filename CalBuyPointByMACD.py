@@ -70,8 +70,7 @@ def BuyStockFromMACD(stockDf):
             # 规则2：出现红柱，即MACD值大于0
             if stockDf.iloc[-2]['MACD'] > 0:
                 print(stockname)
-                print("Buy Point by MACD on:" +
-                      stockDf.iloc[-1]['date'] + '\t'+str(stockDf.iloc[-1]['close']))
+                print("Buy Point by MACD on:" + stockDf.iloc[-1]['date'] + '\t'+str(stockDf.iloc[-1]['close']))
              # 规则1：这天DIF值下穿DEA
     except:
         pass
@@ -84,8 +83,7 @@ def SellStockFromMACD(stockDf):
             # 规则2：Bar柱是否向下运动
             if stockDf.iloc[-1]['MACD'] < stockDf.iloc[-2]['MACD']:
                 print(stockname)
-                print("Sell Point by MACD on:" +
-                      stockDf.iloc[-1]['date'] + '\t'+str(stockDf.iloc[-1]['close']))
+                print("Sell Point by MACD on:" + stockDf.iloc[-1]['date'] + '\t'+str(stockDf.iloc[-1]['close']))
     except:
         pass
 
@@ -98,6 +96,7 @@ for stockname in stockList:
     df = getStockData(stockcode, dataBaseName)
     #df = getStockData(stockname)
     stockDf = getMACDByCode(stockcode)
-    print(stockname)
-    print(stockDf.tail(5))
+    #print(stockname)
+    #print(stockDf.tail(5))
     BuyStockFromMACD(stockDf)
+    #SellStockFromMACD(stockDf)

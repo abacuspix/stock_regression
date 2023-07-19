@@ -43,6 +43,7 @@ def getAllStockList(dataBaseName):
         #print (codename)
         #stockcode = str(filename[0:8])
         codename = codename[2:-3]
+        #print (codename)
         codeList.append(codename)
     return codeList
 

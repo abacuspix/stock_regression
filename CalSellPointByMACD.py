@@ -36,7 +36,7 @@ def calMACD(df, shortTerm=12, longTerm=26, DIFTerm=9):
 def getMACDByCode(code):
     try:
         # 打开数据库连接
-        db = sqlite3.connect('stock.db')
+        db = sqlite3.connect('us_stock.db')
     except:
         print('Error when Connecting to DB.')
         sys.exit()
@@ -54,7 +54,7 @@ def getMACDByCode(code):
     return stockDataFrame
 
 
-stockDf = getMACDByCode('SH601318')
+stockDf = getMACDByCode('NVDA')
 #print (stockDf.tail(5))
 cnt = 0
 while cnt <= len(stockDf)-1:

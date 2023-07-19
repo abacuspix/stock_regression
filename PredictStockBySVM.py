@@ -8,7 +8,7 @@ from tslib import *
 
 workFolder = "c:\\stock\export\\stock\\"
 dataBaseFolder = 'c:\\stock\\'
-dataBaseName = 'stock.db'
+dataBaseName = 'us_stock.db'
 
 #origDf = pd.read_csv('c:/stock/data/6035052018-09-012019-05-31.csv', encoding='gbk')
 
@@ -34,7 +34,7 @@ def getStockData(code, dataBaseName):
     df.columns = heads
     db.close()
     return df
-origDf = getStockData('SH600000', dataBaseName)
+origDf = getStockData('SQQQ', dataBaseName)
 df = origDf[['close', 'high', 'low', 'open', 'volume', 'date']]
 # diff列表示本日和上日收盘价的差
 df['diff'] = df["close"]-df["close"].shift(1)
@@ -92,8 +92,8 @@ plt.legend(loc='best')      # 绘制图例
 # 设置x轴坐标的标签和旋转角度
 major_index = dfWithPredicted.index[dfWithPredicted.index % 2 == 0]
 major_xtics = dfWithPredicted['date'][dfWithPredicted.index % 2 == 0]
-# plt.xticks(major_index, major_xtics)
-# plt.setp(plt.gca().get_xticklabels(), rotation=30)
-# plt.title("通过SVM预测stock的涨跌情况")
-# plt.rcParams['font.sans-serif'] = ['SimHei']
-# plt.show()
+plt.xticks(major_index, major_xtics)
+plt.setp(plt.gca().get_xticklabels(), rotation=30)
+plt.title("通过SVM预测stock的涨跌情况")
+plt.rcParams['font.sans-serif'] = ['SimHei']
+plt.show()

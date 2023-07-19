@@ -50,7 +50,7 @@ def getStockDataFromAPI(stockCode, startDate, endDate):
 def getSockDataFromDB(code):
     try:
         # 打开数据库连接
-        db = sqlite3.connect('etf.db')
+        db = sqlite3.connect('us_stock.db')
     except:
         print('Error when Connecting to DB.')
         sys.exit()
@@ -94,4 +94,4 @@ def printSellPoints(code):
         cnt = cnt+1
 
 
-printSellPoints('SH510050')
+printSellPoints('NVDA')

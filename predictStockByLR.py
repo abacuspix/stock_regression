@@ -11,7 +11,7 @@ from tslib import *
 
 workFolder = "c:\\stock\export\\stock\\"
 dataBaseFolder = 'c:\\stock\\'
-dataBaseName = 'stock.db'
+dataBaseName = 'US_stock.db'
 
 def getStockData(code, dataBaseName):
     try:
@@ -42,7 +42,7 @@ def getStockData(code, dataBaseName):
 
 # 从文件中获取数据
 #origDf = pd.read_csv('c:/stock/data/6035052018-09-012019-05-31.csv',encoding='gbk')
-origDf = getStockData('SH600000', dataBaseName)
+origDf = getStockData('tQQQ', dataBaseName)
 MA_5 = calMA(origDf, 5)
 MA_13 = calMA(origDf, 13)
 MA_55 = calMA(origDf, 55)

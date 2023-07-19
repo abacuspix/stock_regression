@@ -5,10 +5,10 @@ import time
 from datetime import datetime
 from tslib import *
 
-dataBaseName = 'c:\\stock\\stock.db'
+dataBaseName = 'c:\\stock\\cn_stock.db'
 ts = time.time()
 start = datetime.now()
-logName = "choosed_stock_"+str(ts)+".txt"
+logName = "choosed_stock.txt"
 print(start)
 stockList = getAllStockList(dataBaseName)
 #print (stockList)
@@ -20,6 +20,7 @@ def chooseStockFromMA500(stockList):
         f.write(str(datetime.now())+'\n')
         f.write('====================MA500===============================\n')
     for stockname in stockList:
+        
         df = getStockData(stockname, dataBaseName)
         MA_5 = calMA(df, 5)
         MA_13 = calMA(df, 13)
@@ -79,6 +80,7 @@ def chooseStockFromMA55(stockList):
         f.write(str(datetime.now())+'\n')
         f.write('=================MA55====================================\n')
     for stockname in stockList:
+        print (stockname)
         df = getStockData(stockname, dataBaseName)
         MA_5 = calMA(df, 5)
         MA_13 = calMA(df, 13)

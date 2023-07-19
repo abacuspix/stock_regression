@@ -27,7 +27,7 @@ def calRSI(df,periodList):
 def getSockDataFromDB(code):
     try:
         # 打开数据库连接
-        db = sqlite3.connect('etf.db')
+        db = sqlite3.connect('us_stock.db')
     except:
         print('Error when Connecting to DB.')
         sys.exit()
@@ -52,7 +52,7 @@ def getSockDataFromDB(code):
 LIST = [6,12,24]    # 周期列表
 
 # 调用方法计算RSI
-stockDataFrame = calRSI(getSockDataFromDB('SH510050'),LIST) 
+stockDataFrame = calRSI(getSockDataFromDB('SQQQ'),LIST) 
 cnt=0    
 buyDate=''
 while cnt<=len(stockDataFrame)-1:

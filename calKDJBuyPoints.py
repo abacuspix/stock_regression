@@ -146,5 +146,5 @@ def printRSISellPoints(code):
         cnt = cnt+1
 
 
-# printRSISellPoints('SH510050')
-printKDJBuyPoints('SH510050')
+printRSISellPoints('SH510050')
+printRSIBuyPoints('SH510050')

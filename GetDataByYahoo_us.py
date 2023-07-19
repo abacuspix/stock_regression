@@ -34,18 +34,23 @@ def getCodeFromYahooList():
 # db = pd.read_csv("c:\\stock\\nasdaq_screener.csv" )
 # print (db.head(5))
 # stockList=db['Symbol']
-
-start = dt.datetime(2020,1,1)
+start = dt.datetime(2010,1,1)
+#end = dt.datetime(2019,12,31)
 end = datetime.now()
 stockList=getCodeFromYahooList()
 for codename in stockList:
+    print (codename)
     df = yf.download(codename, start , end, adjusted=True)
     #print (data.tail(5))
     #df = df.rename(columns={'Date': 'date', 'Open': 'open', 'High': 'high','Low': 'low','Close':'close',
                             #'Adj Close':'adj close','Volume':'volume'})
     #Date,Open,High,Low,Close,Adj Close,Volume
+    #print(df.size)
     fileName = 'c:\\stock\\data\\us\\'+codename+'.csv'
-    df.to_csv(fileName, encoding='gbk')
-
+    if (df.size>20):
+        df.to_csv(fileName, encoding='gbk')
+        newcodename=codename
+        with open('c:\\stock\\inxYahoo-new.csv', 'a') as file:
+            file.write(newcodename+"\n")
 delta = datetime.now() - start
 print("Program elapsed time in seconds", delta.seconds)

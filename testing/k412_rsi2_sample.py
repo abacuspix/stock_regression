@@ -9,7 +9,7 @@ from pyalgotrade.stratanalyzer import trades
 
 
 def main(plot):
-    instrument = "SQQQ"
+    instrument = "510360"
     entrySMA = 250
     exitSMA = 5
     rsiPeriod = 2
@@ -19,10 +19,9 @@ def main(plot):
     # Download the bars.
     #feed = yahoofinance.build_feed([instrument], 2009, 2012, ".")
     feed = yahoofeed.Feed()
-    feed.addBarsFromCSV(instrument, "data\\us\\SQQQ.csv")
+    feed.addBarsFromCSV(instrument, "data\\ts\\sh510360.csv")
 
-    strat = rsi2.RSI2(feed, instrument, entrySMA, exitSMA,
-                      rsiPeriod, overBoughtThreshold, overSoldThreshold)
+    strat = rsi2.RSI2(feed, instrument, entrySMA, exitSMA, rsiPeriod, overBoughtThreshold, overSoldThreshold)
     sharpeRatioAnalyzer = sharpe.SharpeRatio()
     strat.attachAnalyzer(sharpeRatioAnalyzer)
     retAnalyzer = returns.Returns()
@@ -31,16 +30,13 @@ def main(plot):
     strat.attachAnalyzer(drawDownAnalyzer)
     tradesAnalyzer = trades.Trades()
     strat.attachAnalyzer(tradesAnalyzer)
-
+   
     if plot:
         plt = plotter.StrategyPlotter(strat, True, True, True)
-        plt.getInstrumentSubplot(instrument).addDataSeries(
-            "Entry SMA", strat.getEntrySMA())
-        plt.getInstrumentSubplot(instrument).addDataSeries(
-            "Exit SMA", strat.getExitSMA())
+        plt.getInstrumentSubplot(instrument).addDataSeries("Entry SMA", strat.getEntrySMA())
+        plt.getInstrumentSubplot(instrument).addDataSeries("Exit SMA", strat.getExitSMA())
         plt.getOrCreateSubplot("rsi").addDataSeries("RSI", strat.getRSI())
-        plt.getOrCreateSubplot("rsi").addLine(
-            "Overbought", overBoughtThreshold)
+        plt.getOrCreateSubplot("rsi").addLine("Overbought", overBoughtThreshold)
         plt.getOrCreateSubplot("rsi").addLine("Oversold", overSoldThreshold)
 
     strat.run()

@@ -5,7 +5,7 @@ from pyalgotrade.technical import ma
 
 class MyStrategy(strategy.BacktestingStrategy):
     def __init__(self, feed, instrument, smaPeriod):
-        strategy.BacktestingStrategy.__init__(self, feed, 1000)
+        strategy.BacktestingStrategy.__init__(self, feed, 10000)
         self.__position = None
         self.__instrument = instrument
         # We'll use adjusted close values instead of regular close values.
@@ -47,14 +47,14 @@ class MyStrategy(strategy.BacktestingStrategy):
 def run_strategy(smaPeriod):
     # Load the yahoo feed from the CSV file
     feed = yahoofeed.Feed()
-    feed.addBarsFromCSV("orcl", "data\\us\\orcl.csv")
+    feed.addBarsFromCSV("601318", "data\\cn\\601318.csv")
 
     # Evaluate the strategy with the feed.
-    myStrategy = MyStrategy(feed, "orcl", smaPeriod)
+    myStrategy = MyStrategy(feed, "601318", smaPeriod)
     myStrategy.run()
     print ("Final portfolio value: $%.2f" % myStrategy.getBroker().getEquity())
 
-run_strategy(15)
+run_strategy(20)
 
 #-------
 #for i in range(10, 30):

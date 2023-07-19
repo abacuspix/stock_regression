@@ -51,13 +51,13 @@ class BBands(strategy.BacktestingStrategy):
 
 
 def main():
-    instrument = "601318"
+    instrument = "PANW"
     bBandsPeriod = 30
 
     # Download the bars.
     #feed = yahoofinance.build_feed([instrument], 2011, 2012, ".")
     feed = yahoofeed.Feed()
-    feed.addBarsFromCSV(instrument, "data\\sh601318.csv")
+    feed.addBarsFromCSV(instrument, "data\\us\\PANW.csv")
 
     strat = BBands(feed, instrument, bBandsPeriod)
     sharpeRatioAnalyzer = sharpe.SharpeRatio()

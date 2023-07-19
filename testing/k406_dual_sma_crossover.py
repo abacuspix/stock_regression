@@ -12,14 +12,14 @@ logName="Google-dual-sma.log"
 def run_strategy(smaPeriod1, smaPeriod2):
     # Load the bar feed from the CSV file
 
-    instrument = "GOOGL"
+    instrument = "TQQQ"
     smaPeriod1 = smaPeriod1
     smaPeriod2 = smaPeriod2
 
     # Download the bars.
     #feed = yahoofinance.build_feed([instrument], 2011, 2012, ".")
     feed = yahoofeed.Feed()
-    feed.addBarsFromCSV(instrument, "data\\us\\GOOGL.csv")
+    feed.addBarsFromCSV(instrument, "data\\us\\TQQQ.csv")
     #print(feeds)
 
     # Evaluate the strategy with the feed's bars.
@@ -53,26 +53,26 @@ def run_strategy(smaPeriod1, smaPeriod2):
     print("夏普比率 Sharpe ratio: %.2f" % (sharpeRatioAnalyzer.getSharpeRatio(0.05)))
     print("最大回撤率 Max. drawdown: %.2f %%" % (drawDownAnalyzer.getMaxDrawDown() * 100))
     print("最长回撤时间 Longest drawdown duration: %s" % (drawDownAnalyzer.getLongestDrawDownDuration()))   """
-    with open(logName, 'a') as f:
-        f.write('\n')
-        f.write("smaPeriod1 %f smaPeriod2 %f :" %(smaPeriod1, smaPeriod2),)
-        f.write("最终资产价值 Final portfolio value: $%.2f" % myStrategy.getResult(),)
-        f.write("累计回报率 Cumulative returns: %.2f %%" % (returnsAnalyzer.getCumulativeReturns()[-1] * 100),)
-        f.write("夏普比率 Sharpe ratio: %.2f" % (sharpeRatioAnalyzer.getSharpeRatio(0.05)),)
-        f.write("最大回撤率 Max. drawdown: %.2f %%" % (drawDownAnalyzer.getMaxDrawDown() * 100),)
-        f.write("最长回撤时间 Longest drawdown duration: %s" % (drawDownAnalyzer.getLongestDrawDownDuration()))    
-    # print("smaPeriod1 %f smaPeriod2 %f :" %(smaPeriod1, smaPeriod2),)
-    # print("最终资产价值 Final portfolio value: $%.2f" % myStrategy.getResult(),)
-    # print("累计回报率 Cumulative returns: %.2f %%" % (returnsAnalyzer.getCumulativeReturns()[-1] * 100),)
-    # print("夏普比率 Sharpe ratio: %.2f" % (sharpeRatioAnalyzer.getSharpeRatio(0.05)),)
-    # print("最大回撤率 Max. drawdown: %.2f %%" % (drawDownAnalyzer.getMaxDrawDown() * 100),)
-    # print("最长回撤时间 Longest drawdown duration: %s" % (drawDownAnalyzer.getLongestDrawDownDuration()))  
-    # Plot the strategy.
-    #plt.plot()
-#run_strategy(5, 20)
-for i in range(1,61):
-    for j in range(1,251):
-        if i<j:
-            run_strategy(i, j)
+    # with open(logName, 'a') as f:
+    #     f.write('\n')
+    #     f.write("smaPeriod1 %f smaPeriod2 %f :" %(smaPeriod1, smaPeriod2),)
+    #     f.write("最终资产价值 Final portfolio value: $%.2f" % myStrategy.getResult(),)
+    #     f.write("累计回报率 Cumulative returns: %.2f %%" % (returnsAnalyzer.getCumulativeReturns()[-1] * 100),)
+    #     f.write("夏普比率 Sharpe ratio: %.2f" % (sharpeRatioAnalyzer.getSharpeRatio(0.05)),)
+    #     f.write("最大回撤率 Max. drawdown: %.2f %%" % (drawDownAnalyzer.getMaxDrawDown() * 100),)
+    #     f.write("最长回撤时间 Longest drawdown duration: %s" % (drawDownAnalyzer.getLongestDrawDownDuration()))    
+    print("smaPeriod1 %f smaPeriod2 %f :" %(smaPeriod1, smaPeriod2),)
+    print("最终资产价值 Final portfolio value: $%.2f" % myStrategy.getResult(),)
+    print("累计回报率 Cumulative returns: %.2f %%" % (returnsAnalyzer.getCumulativeReturns()[-1] * 100),)
+    print("夏普比率 Sharpe ratio: %.2f" % (sharpeRatioAnalyzer.getSharpeRatio(0.05)),)
+    print("最大回撤率 Max. drawdown: %.2f %%" % (drawDownAnalyzer.getMaxDrawDown() * 100),)
+    print("最长回撤时间 Longest drawdown duration: %s" % (drawDownAnalyzer.getLongestDrawDownDuration()))  
+    #Plot the strategy.
+    plt.plot()
+run_strategy(13, 55)
+#for i in range(1,61):
+#    for j in range(1,251):
+#        if i<j:
+#            run_strategy(i, j)
 
 

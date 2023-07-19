@@ -25,7 +25,7 @@ def isLessThanPer(lessVal, highVal, per):
 def getStockData(code):
     try:
         # 打开数据库连接
-        db = sqlite3.connect('etf.db')
+        db = sqlite3.connect('us_stock.db')
     except:
         print('Error when Connecting to DB.')
         sys.exit()
@@ -48,7 +48,7 @@ def getStockData(code):
 # 本次直接从文件中读取数据
 #df = pd.read_csv('c:/stock/export/STOCK/SH601318.csv',skiprows=[0,1],names=("Date","Open","High","Low","Close","Volume","vol2"), encoding='gbk')
 # delete the last colume
-df = getStockData('SH510050')
+df = getStockData('NVDA')
 cnt = 0
 while cnt <= len(df)-1:
     try:
@@ -56,13 +56,11 @@ while cnt <= len(df)-1:
         if isLessThanPer(df.iloc[cnt]['close'], df.iloc[cnt+1]['close'], 3) and isLessThanPer(df.iloc[cnt]['close'], df.iloc[cnt+2]['close'], 3):
             # 规则2：连续三天成交量涨幅超过75%
             if isMoreThanPer(df.iloc[cnt]['volume'], df.iloc[cnt+1]['volume'], 75) and isMoreThanPer(df.iloc[cnt]['volume'], df.iloc[cnt+2]['volume'], 75):
-                print("Buy Point on:" + df.iloc[cnt]
-                      ['date'], df.iloc[cnt]['close'])
+                print("Buy Point on:" + df.iloc[cnt] + ['date'], df.iloc[cnt]['close'])
         if isLessThanPer(df.iloc[cnt]['close'], df.iloc[cnt+1]['close'], 3) and isLessThanPer(df.iloc[cnt]['close'], df.iloc[cnt+2]['close'], 3):
             # 规则2：连续三天成交量跌幅超过75%
             if isMoreThanPer(df.iloc[cnt+1]['volume'], df.iloc[cnt]['volume'], 75) and isMoreThanPer(df.iloc[cnt+2]['volume'], df.iloc[cnt]['volume'], 75):
-                print("Sell Point on:" +
-                      df.iloc[cnt]['date'], df.iloc[cnt]['close'])
+                print("Sell Point on:" + df.iloc[cnt]['date'], df.iloc[cnt]['close'])
     except:
         pass
     cnt = cnt+1

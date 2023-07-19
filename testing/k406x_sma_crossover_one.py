@@ -7,16 +7,16 @@ from pyalgotrade.stratanalyzer import returns
 from pyalgotrade.stratanalyzer import drawdown
 from pyalgotrade.stratanalyzer import trades
 
-logName="tqqq-report-SMA.log"
+logName="601318-report-SMA.log"
 def main(plot):
     
-    for smaPeriod in range(1,300):
-        instrument = "tqqq"
+    for smaPeriod in range(60,61):
+        instrument = "601318"
         
     # Download the bars.
     #feed = yahoofinance.build_feed([instrument], 2011, 2012, ".")
         feed = yahoofeed.Feed()
-        feed.addBarsFromCSV(instrument, "data\\us\\tqqq.csv")
+        feed.addBarsFromCSV(instrument, "data\\cn\\601318.csv")
 
 
         strat = sma_crossoverx.SMACrossOver(feed, instrument, smaPeriod)

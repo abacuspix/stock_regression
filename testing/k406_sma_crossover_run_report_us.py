@@ -7,7 +7,6 @@ from pyalgotrade.stratanalyzer import returns
 from pyalgotrade.stratanalyzer import drawdown
 from pyalgotrade.stratanalyzer import trades
 from datetime import datetime
-from tslib import *
 import csv,os
 
 

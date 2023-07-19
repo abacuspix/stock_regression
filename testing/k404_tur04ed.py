@@ -3,15 +3,12 @@ import pandas as pd
 
 from pyalgotrade.barfeed import yahoofeed
 from pyalgotrade.stratanalyzer import returns
-
 from pyalgotrade.stratanalyzer import sharpe
 from pyalgotrade.stratanalyzer import drawdown
-
 from pyalgotrade.stratanalyzer import trades
 from pyalgotrade import strategy
 from pyalgotrade.technical import ma
 from pyalgotrade.technical import cross
-
 from pyalgotrade import plotter
 
 

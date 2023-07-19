@@ -8,13 +8,12 @@ from pyalgotrade.stratanalyzer import drawdown
 from pyalgotrade.stratanalyzer import trades
 
 def main(plot):
-    instrument = "GOOGL"
-    smaPeriod = 60
-
+    instrument = "PANW"
+    smaPeriod = 10
     # Download the bars.
     #feed = yahoofinance.build_feed([instrument], 2011, 2012, ".")
     feed = yahoofeed.Feed()
-    feed.addBarsFromCSV(instrument, "data\\us\\GOOGL.csv")
+    feed.addBarsFromCSV(instrument, "data\\us\\PANW.csv")
 
     strat = sma_crossover.SMACrossOver(feed, instrument, smaPeriod)
     sharpeRatioAnalyzer = sharpe.SharpeRatio()
