@@ -104,7 +104,6 @@ chooseStockFromMA55(stockList)
 chooseStockFromMA120(stockList)
 chooseStockFromMA250(stockList)
 chooseStockFromMA500(stockList)
-
 # finished the report
 with open(logName, 'a') as f:
     f.write('==========================================================\n')
